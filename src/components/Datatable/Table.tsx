@@ -18,7 +18,16 @@ function TableRows({ value }) {
       );
     }
   }
-  return rows;
+
+  // return rows;
+
+  return value.map((row) => (
+    <tr key={row.name}>
+      <td>{row.name}</td>
+      <td>{row.email}</td>
+      <td>{row.address.city}</td>
+    </tr>
+  ));
 }
 
 function TableHeaders({ headers }) {
@@ -37,13 +46,13 @@ function TableHeaders({ headers }) {
   );
 }
 
-function Table() {
+function Table({ data }) {
   return (
     <>
       <table>
         <TableHeaders headers={headers} />
         <tbody>
-          <TableRows value={Users} />
+          <TableRows value={data} />
         </tbody>
       </table>
     </>
