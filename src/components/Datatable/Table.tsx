@@ -1,5 +1,7 @@
-import React from 'react';
-import Paginator from '../Datatable/Paginator';
+import React, { useContext } from 'react';
+import Paginator from './Paginator';
+
+// const theme = useContext(ThemeContext);
 
 function TableHeaders({ headers }) {
   let rows: any = [];
