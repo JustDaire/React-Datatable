@@ -2,10 +2,12 @@ import React from 'react';
 import Table from './components/Datatable/Table';
 import Users from './data/users.json';
 
+const headers = ['Name', 'Email', 'Location'];
+
 const Customers = () => {
   return (
     <>
-      <Table data={Users}/>
+      <Table headers={headers} data={Users} />
     </>
   );
 };

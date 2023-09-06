@@ -1,34 +1,5 @@
 import React from 'react';
-import Users from '../../data/users.json';
-
-const headers = ['Name', 'Email', 'Location'];
-
-function TableRows({ value }) {
-  // Create table row element
-  let rows: any = [];
-  for (let i = 0; i <= value.length; i++) {
-    // Prevent the config from loading the element twice
-    if (value[i]) {
-      rows.push(
-        <tr>
-          <td>{value[i].name}</td>
-          <td>{value[i].email}</td>
-          <td>{value[i].address.city}</td>
-        </tr>
-      );
-    }
-  }
-
-  // return rows;
-
-  return value.map((row) => (
-    <tr key={row.name}>
-      <td>{row.name}</td>
-      <td>{row.email}</td>
-      <td>{row.address.city}</td>
-    </tr>
-  ));
-}
+import Paginator from '../Datatable/Paginator';
 
 function TableHeaders({ headers }) {
   let rows: any = [];
@@ -46,15 +17,43 @@ function TableHeaders({ headers }) {
   );
 }
 
-function Table({ data }) {
+function TableRows({ rows }) {
+  // Create table row element
+  let rowArray: any = [];
+  for (let i = 0; i <= rows.length; i++) {
+    // Prevent the config from loading the element twice
+    if (rowArray[i]) {
+      rows.push(
+        <tr>
+          <td>{rowArray[i].name}</td>
+          <td>{rowArray[i].email}</td>
+          <td>{rowArray[i].address.city}</td>
+        </tr>
+      );
+    }
+  }
+
+  // return rows;
+
+  return rows.map((row) => (
+    <tr key={row.name}>
+      <td>{row.name}</td>
+      <td>{row.email}</td>
+      <td>{row.address.city}</td>
+    </tr>
+  ));
+}
+
+function Table({ headers, data }) {
   return (
     <>
-      <table>
+      <table className="table table-bordered">
         <TableHeaders headers={headers} />
         <tbody>
-          <TableRows value={data} />
+          <TableRows rows={data} />
         </tbody>
       </table>
+      <Paginator />
     </>
   );
 }
