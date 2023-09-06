@@ -1,4 +1,5 @@
 import React from 'react';
+import Table from './components/Datatable/Table';
 import Users from './data/users.json';
 
 function TableRow() {
@@ -22,6 +23,7 @@ function TableRow() {
 const Customers = () => {
   return (
     <>
+      <Table />
       <table className="table table-bordered">
         <thead>
           <tr>
