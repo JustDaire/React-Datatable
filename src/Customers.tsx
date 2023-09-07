@@ -8,37 +8,41 @@ const headers = ['Name', 'Email', 'Location'];
 const Customers = () => {
   const [state, setState] = useState({
     data: [],
-    limit: 10,
+    limit: 5,
     activePage: 1,
   });
 
   useEffect(() => {
-    fetch('https://api.example.com/data')
+    fetch(
+      `https://jsonplaceholder.typicode.com/users?_page=1&_limit=${state.limit}`
+    )
       .then((response) => response.json())
-      .then((res) => {
+      .then((json) => {
+        // console.log('json', json);
         setState((prev) => ({
           ...prev,
-          data: res.data,
+          data: json,
         }));
-      })
-      .catch((error) => console.error(error));
+      });
+    // console.log('State', state);
   }, [state.limit]);
+  console.log('State', state);
+  // console.log('Data:', state.data);
   const handlePageChange = (pageNumber) => {
     setState((prev) => ({ ...prev, activePage: pageNumber }));
 
-  // useEffect(() => {
-  //   fetch(
-  //     `./data/users.json`
-  //     // `https://jsonplaceholder.typicode.com/users?_page=1&_limit=${state.limit}`
-  //   )
-  //     .then((res) => {
-  //       setState((prev) => ({
-  //         ...prev,
-  //         data: res.data,
-  //       }));
-  //     })
-  //     .catch((error) => console.log(error));
-  // }, [state.limit]);
+    fetch(
+      `https://jsonplaceholder.typicode.com/users?_page=${pageNumber}&_limit=${state.limit}`
+    )
+      .then((response) => response.json())
+      .then((json) => {
+        setState((prev) => ({
+          ...prev,
+          data: json,
+        }));
+      })
+      .catch((error) => console.log(error));
+  };
   return (
     <>
       <h1>Bootstrap Table</h1>
