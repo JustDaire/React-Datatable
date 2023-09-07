@@ -1,4 +1,5 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { Pagination } from 'react-bootstrap';
 import Paginator from './Paginator';
 
 // const theme = useContext(ThemeContext);
