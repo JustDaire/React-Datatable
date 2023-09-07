@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Pagination } from 'react-bootstrap';
 import Table from './components/Datatable/Table';
 import Users from './data/users.json';
+import { createTodos, filterTodos, getCustomers } from './utils';
 
 const headers = ['Name', 'Email', 'Location'];
 
@@ -26,7 +27,7 @@ const Customers = () => {
       });
     // console.log('State', state);
   }, [state.limit]);
-  console.log('State', state);
+  // console.log('State', state);
   // console.log('Data:', state.data);
   const handlePageChange = (pageNumber) => {
     setState((prev) => ({ ...prev, activePage: pageNumber }));
@@ -45,8 +46,8 @@ const Customers = () => {
   };
   return (
     <>
-      <h1>Bootstrap Table</h1>
-      <Pagination className="px-4">
+      <Table headers={headers} data={state.data} />
+      <Pagination>
         {state.data.map((_, index) => {
           return (
             <Pagination.Item
@@ -59,8 +60,6 @@ const Customers = () => {
           );
         })}
       </Pagination>
-      <h1>Bootstrap Table from component</h1>
-      <Table headers={headers} data={Users} />
     </>
   );
 };

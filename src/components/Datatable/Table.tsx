@@ -21,6 +21,7 @@ function TableHeaders({ headers }) {
 }
 
 function TableRows({ rows }) {
+  console.log('rows', rows);
   // Create table row element
   let rowArray: any = [];
   for (let i = 0; i <= rows.length; i++) {
@@ -48,6 +49,7 @@ function TableRows({ rows }) {
 }
 
 function Table({ headers, data }) {
+  console.log('data', data);
   return (
     <>
       <table className="table table-bordered">
@@ -56,7 +58,6 @@ function Table({ headers, data }) {
           <TableRows rows={data} />
         </tbody>
       </table>
-      <Paginator />
     </>
   );
 }
