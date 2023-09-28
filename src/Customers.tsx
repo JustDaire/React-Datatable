@@ -48,6 +48,8 @@ const Customers = () => {
     <>
       <Table headers={headers} data={state.data} />
       <Pagination>
+        <Pagination.First />
+        <Pagination.Prev />
         {state.data.map((_, index) => {
           return (
             <Pagination.Item
@@ -59,12 +61,11 @@ const Customers = () => {
             </Pagination.Item>
           );
         })}
+        <Pagination.Next />
+        <Pagination.Last />
       </Pagination>
     </>
   );
 };
-
-// let admins = require('~/app/admins.json');
-// console.log(admins[0].userName);
 
 export default Customers;
