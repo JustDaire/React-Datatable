@@ -10,7 +10,7 @@ function TableHeaders({ headers }) {
       <thead>
         <tr>
           {headers.map((header) => (
-            <th>{header}</th>
+            <th key={header}>{header}</th>
           ))}
         </tr>
       </thead>
